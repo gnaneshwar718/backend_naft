@@ -1,0 +1,48 @@
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+app.use(express.json())
+
+const mongoURL="mongodb+srv://valid_official:<valid123>@cluster0.psyhu6d.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(mongoURL,{
+    useNewUrlParser: true
+}).then(() => {console.log("Connected to database");})
+.catch((e) => console.log(e));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.listen(6089,()=> {
+    console.log("server started");
+});
+
+
+
+app.post("/post", async (req, res) => {
+    console.log(req.body);
+
+    const {data} = req.body;
+    try{
+       if (data == "gnaneshwar"){
+           res.send({status: "ok"});
+       }else{
+           res.send({status: "error"});
+       }
+   } catch (error) {
+       res.send({status: "user not found"});
+   }
+   });
+   
+          
+
+
